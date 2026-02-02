@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fde68a;
+}
+
+/* HAMBURGER MENU */
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ---------- ABOUT SECTION ---------- */
+#about {
+  padding: 4rem 2rem;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-container img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #6366f1;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #38bdf8;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ---------- PROJECTS ---------- */
+#projects {
+  background: #020617;
+  padding: 4rem 2rem;
+}
+
+#projects h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #f472b6;
+  margin-bottom: 3rem;
+}
+
+.project-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: #111827;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(99,102,241,0.5);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 1.2rem;
+}
+
+.project-content h3 {
+  color: #a5b4fc;
+  margin-bottom: 0.5rem;
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.project-content a {
+  text-decoration: none;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+/* ---------- CONTACT ---------- */
+#contact {
+  padding: 4rem 2rem;
+}
+
+#contact h2 {
+  text-align: center;
+  color: #22d3ee;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.contact-form button {
+  padding: 0.9rem;
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #020617;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.socials {
+  margin-bottom: 0.8rem;
+}
+
+.socials a {
+  color: #94a3b8;
+  font-size: 1.4rem;
+  margin: 0 0.6rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #38bdf8;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #020617;
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  #menu-toggle:checked + .menu-icon + .nav-links {
+    display: flex;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav class="navbar">
+    <div class="logo">MyPortfolio</div>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-container">
+    <img src="https://plus.unsplash.com/premium_photo-1677368598732-b944defee32c?" alt="Profile">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>
+        Hi! I'm a passionate Computer Engineering student who loves building
+        creative, responsive, and user-friendly web applications.
+        I enjoy working with modern designs and bringing ideas to life on the web.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>My Projects</h2>
+  <div class="project-grid">
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Screenshot of Face2Beats project">
+      <div class="project-content">
+        <h3>Face2Beats</h3>
+        <p>Emotion-based music recommendation system using AI.</p>
+        <a href="#">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Screenshot of Bank Management System project">
+      <div class="project-content">
+        <h3>Bank Management System</h3>
+        <p>A secure system to manage bank operations efficiently.</p>
+        <a href="#">View Project →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e" alt="Screenshot of Valido project">
+      <div class="project-content">
+        <h3>Valido</h3>
+        <p>A hackathon project focused on smart validation solutions.</p>
+        <a href="#">View Project →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form class="contact-form">
+    <label>Name</label>
+    <input type="text" placeholder="Your Name">
+
+    <label>Email</label>
+    <input type="email" placeholder="Your Email">
+
+    <label>Message</label>
+    <textarea rows="5" placeholder="Your Message"></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="socials">
+    <a href="#">🌐</a>
+    <a href="#">🐦</a>
+    <a href="#">💼</a>
+  </div>
+  <p>© 2026 Callis Almeida : 10915. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
